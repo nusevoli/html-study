@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function uploadFromLocal()
+        {
+            const url = "https://naver.com"
+            try
+            {
+                __er_open_file_selector__(url)
+            }
+            catch(e)
+            {
+                console.log(e)
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="#" onclick="uploadFromLocal()">UPLOAD from Local</a>
+</body>
+</html>
