@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Shape and Color</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .shape {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red; /* Initial color */
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid green; /* Triangle color */
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="shape"></div>
+
+    <script>
+        const shape = document.querySelector('.shape');
+        let shapeIndex = 0;
+
+        // Array of shapes and corresponding colors
+        const shapes = [
+            { type: 'square', color: 'red' },   // Square
+            { type: 'circle', color: 'blue' },  // Circle
+            { type: 'triangle', color: 'green' } // Triangle
+        ];
+
+        function changeShape() {
+            shapeIndex = (shapeIndex + 1) % shapes.length;
+            const currentShape = shapes[shapeIndex];
+
+            // Reset shape styles
+            shape.className = 'shape';
+            shape.style.backgroundColor = currentShape.color;
+            shape.style.width = '100px';
+            shape.style.height = '100px';
+
+            // Apply specific shape styles
+            if (currentShape.type === 'circle') {
+                shape.classList.add('circle');
+            } else if (currentShape.type === 'triangle') {
+                shape.classList.add('triangle');
+                shape.style.backgroundColor = 'transparent'; // Make background transparent for triangle
+                shape.style.width = '0';
+                shape.style.height = '0';
+            }
+        }
+
+        // Initial shape setup
+        changeShape();
+
+        // Change shape every 2 seconds
+        setInterval(changeShape, 2000);
+    </script>
+</body>
+</html>
