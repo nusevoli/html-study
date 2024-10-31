@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            height: 50px;
+            width: 50%;
+        }
+    </style>
+    <script>
+        const $ = (id) => document.getElementById(id)
+
+        const update = () => {
+            $("diff_command").innerHTML = `code --diff ${$("old").value}/${$("path").value} ${$("path").value}`
+        }
+    </script>
+</head>
+<body>
+    <input type = "text" id="old" value="/home/ermind/workspace/qt6.5.2" /><br/>
+    <input type = "text" id="path" onchange="update()" value="qtbase/src/gui/kernel/qeventpoint_p.h"/><br/>
+    <div id="diff_command"></div>
+</body>
+</html>
